@@ -97,3 +97,19 @@ Train/Test : 80% / 20%  (stratified by year of manufacture)
 | `Model_Focus` | 0.0014 |
 
 > Year of manufacture alone accounts for ~62% of the model's predictive power, followed by engine size at ~26%. This makes intuitive sense — car age is the single biggest driver of depreciation. Prestige models (M5, 911) show up as meaningful signals despite being rare in the data.
+
+---
+
+## 🖥️ Streamlit Web App
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://shivang-27-car-price-predictor-car-price-predictor-app-jczswg.streamlit.app/)
+
+The trained model is served as an interactive web app built with Streamlit (`car_price_predictor_app.py`). The app retrains the full pipeline at startup from the raw CSV — no separate `.pkl` file needed.
+
+### Features
+
+**Predict Price tab** — Select manufacturer, model, fuel type, year, engine size, and mileage. Models filter dynamically by manufacturer. Returns an estimated price with a ±MAE confidence range.
+
+**Model Performance tab** — Test-set metrics (R², MAE, RMSE), actual vs. predicted scatter plot, residuals distribution histogram, and per-price-bucket error breakdown (<£5K, £5K–15K, £15K–40K, >£40K). Includes a train vs. test R² overfitting check.
+
+**Feature Analysis tab** — Top 15 feature importances bar chart, key driver insight cards, and a numeric correlation heatmap (Engine Size, Year, Mileage vs. Price).
