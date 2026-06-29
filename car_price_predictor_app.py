@@ -181,7 +181,7 @@ st.markdown("""
 # ── Data & model (cached) ─────────────────────────────────────────────────────
 @st.cache_resource(show_spinner="Training model on 50 000 cars…")
 def load_model_and_data():
-    cars = pd.read_csv("data_files/car_sales_data.csv")
+    cars = pd.read_csv("car_sales_data.csv")
 
     # Stratified split
     cars["YOM_cat"] = pd.cut(
